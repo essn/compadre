@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - db/schema.rb
+    - spec/test_app/**/*
 AccessorMethodName:
   Enabled: false
 ActionFilter:

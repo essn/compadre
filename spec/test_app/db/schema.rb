@@ -12,10 +12,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20151024063659) do
-
   create_table "compadre_friendships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
+    t.integer "user_id"
+    t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,5 +26,4 @@ ActiveRecord::Schema.define(version: 20151024063659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end

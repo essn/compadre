@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Compadre
   RSpec.describe Friendship, type: :model do

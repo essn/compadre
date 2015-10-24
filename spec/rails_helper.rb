@@ -1,10 +1,13 @@
-ENV['RAILS_ENV'] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../spec/test_app/config/environment", __FILE__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'spec_helper'
-require 'rspec/rails'
-require 'shoulda/matchers'
+if Rails.env.production?
+  abort("The Rails environment is running in production mode!")
+end
+
+require "spec_helper"
+require "rspec/rails"
+require "shoulda/matchers"
 
 ActiveRecord::Migration.maintain_test_schema!
 
