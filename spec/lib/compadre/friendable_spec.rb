@@ -69,6 +69,10 @@ RSpec.describe Compadre::Friendable do
       expect(another_user.friends.map(&:id)).to include(user.id)
     end
 
+    it 'friends_with returns true' do
+      expect(user.friends_with(another_user)).to be(true)
+    end
+
     it "destroys the friend_request" do
       expect(Compadre::FriendRequest.all.count).to eq(0)
     end
