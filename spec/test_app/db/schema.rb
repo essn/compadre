@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024063659) do
+ActiveRecord::Schema.define(version: 20151024071143) do
+
+  create_table "compadre_friend_requests", force: :cascade do |t|
+    t.integer  "requester_id"
+    t.integer  "requested_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "compadre_friend_requests", ["requested_id"], name: "index_compadre_friend_requests_on_requested_id"
+  add_index "compadre_friend_requests", ["requester_id"], name: "index_compadre_friend_requests_on_requester_id"
+
   create_table "compadre_friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
+    t.integer  "user_id"
+    t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,4 +37,5 @@ ActiveRecord::Schema.define(version: 20151024063659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
