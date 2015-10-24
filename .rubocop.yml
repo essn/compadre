@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - db/schema.rb
     - spec/test_app/**/*
+  DisplayCopNames: true
 AccessorMethodName:
   Enabled: false
 ActionFilter:
@@ -245,4 +246,6 @@ Validation:
 Style/MultilineBlockChain:
   Description: 'Avoid multi-line chains of blocks.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
+  Enabled: false
+Style/BlockDelimiters:
   Enabled: false
