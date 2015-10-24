@@ -46,5 +46,9 @@ module Compadre
       Compadre::FriendRequest.
         find_by_requested_id_and_requester_id(id, resource.id)
     end
+
+    def friends_with(resource)
+      friendships.find(resource.id).present?
+    end
   end
 end
