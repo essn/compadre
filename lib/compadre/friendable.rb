@@ -50,5 +50,10 @@ module Compadre
     def friends_with(resource)
       friendships.find(resource.id).present?
     end
+
+    def remove_friendship_with(resource)
+      ids = [id, resource.id]
+      Compadre::Friendship.where(user_id: ids, friend_id: ids).destroy_all
+    end
   end
 end

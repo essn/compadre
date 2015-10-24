@@ -77,4 +77,20 @@ RSpec.describe Compadre::Friendable do
       expect(Compadre::FriendRequest.all.count).to eq(0)
     end
   end
+
+  describe "#remove_friendship_with" do
+    before(:each) do
+      Compadre::Friendship.create(user: user, friend: another_user)
+      Compadre::Friendship.create(user: another_user, friend: user)
+      user.remove_friendship_with(another_user)
+    end
+
+    it "destroys the friendship model for the invoker" do
+      expect(user.friends.map(&:id)).to_not include(another_user.id)
+    end
+
+    it "destroys the friendship model for the friend" do
+      expect(another_user.friends.map(&:id)).to_not include(user.id)
+    end
+  end
 end
