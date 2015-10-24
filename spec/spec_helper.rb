@@ -6,4 +6,9 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  config.before do
+    allow(Compadre).to receive(:resource_name) { "User" }
+    User.send(:include, Compadre::Friendable)
+  end
 end
