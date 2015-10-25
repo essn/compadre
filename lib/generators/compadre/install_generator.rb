@@ -14,6 +14,10 @@ module Compadre
         end
       end
 
+      def create_initializer_file
+        copy_file("compadre.rb", "config/initializers/compadre.rb")
+      end
+
       private
 
       def next_migration_number
