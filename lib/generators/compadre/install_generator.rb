@@ -17,11 +17,15 @@ module Compadre
       end
 
       def create_initializer_file
-        # Refactor to match below implementation
-        copy_file("compadre.rb", "config/initializers/compadre.rb")
-        config = File.read("config/initializers/compadre.rb")
-        config.gsub!(/klass/, "\"#{user_class.underscore.classify}\"")
-        File.open("config/initializers/compadre.rb", "w") {|file| file.puts config }
+        resource_name_line = "config.resource_name ="
+        initializer_dest = "config/initializers/compadre.rb"
+
+        copy_file("compadre.rb", initializer_dest)
+
+        line = parse_file_for_line(initializer_dest, resource_name_line).strip
+        new_line = "#{line} \"#{user_class.underscore.classify}\""
+
+        insert_after_line(initializer_dest, line, new_line)
       end
 
       def add_route_mount
