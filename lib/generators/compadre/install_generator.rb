@@ -6,6 +6,8 @@ module Compadre
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("../../templates", __FILE__)
 
+      argument :user_class, type: :string, default: "User"
+
       def create_migrations
         Dir["#{self.class.source_root}/migrations/*.rb"].sort.each do |filepath|
           name = File.basename(filepath)
@@ -16,6 +18,9 @@ module Compadre
 
       def create_initializer_file
         copy_file("compadre.rb", "config/initializers/compadre.rb")
+        config = File.read("config/initializers/compadre.rb")
+        config.gsub!(/klass/, "\"#{user_class.underscore.classify}\"")
+        File.open("config/initializers/compadre.rb", "w") {|file| file.puts config }
       end
 
       private
