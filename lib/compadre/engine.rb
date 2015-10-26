@@ -1,5 +1,7 @@
 module Compadre
   class Engine < ::Rails::Engine
+    engine_name 'compadre'
+
     isolate_namespace Compadre
 
     config.generators do |g|
