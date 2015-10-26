@@ -1,4 +1,5 @@
 # Compadre
+[![Code Climate](https://codeclimate.com/github/essn/compadre/badges/gpa.svg)](https://codeclimate.com/github/essn/compadre)
 
 ![Hellen Keller](http://www.globalresearch.ca/wp-content/uploads/2013/10/helenkeller2.jpg)
 
